@@ -1,0 +1,271 @@
+{
+  "swagger": "2.0",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "info": {
+    "title": "Asset Tracking",
+    "description": "This API is for asset tracking",
+    "version": "1"
+  },
+  "paths": {
+    "/devices": {
+      "get": {
+        "description": "Get all devices",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeviceDTO"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "addDevice",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeviceDTO"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "put": {
+        "description": "Updates Device",
+        "operationId": "updateDevice",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of device to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "device",
+            "in": "body",
+            "description": "the values to use",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/DeviceDTO"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "400": {
+            "description": "Device does not exist"
+          }
+        }
+      },
+      "delete": {
+        "description": "deletes device",
+        "operationId": "deleteDevice",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "the id of the device to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "400": {
+            "description": "Invalid ID, this device does not exist!"
+          }
+        }
+      }
+    },
+    "/logs": {
+      "post": {
+        "operationId": "addLog",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LogDTO"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete Log",
+        "operationId": "deleteLog",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of log to delete",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "device deleted!"
+          },
+          "400": {
+            "description": "device not found!"
+          }
+        }
+      },
+      "get": {
+        "description": "Get all logs",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "fromTime",
+            "in": "query",
+            "description": "Get logs starting from this datetime",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "toTime",
+            "in": "query",
+            "description": "Get logs up to this datetime",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "deviceID",
+            "in": "query",
+            "description": "Get logs for this device",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LogDTO"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DeviceDTO": {
+      "type": "object",
+      "required": [
+        "bt_addr",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "243"
+        },
+        "bt_addr": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "date_enrolled": {
+          "type": "string"
+        },
+        "missing": {
+          "type": "string"
+        }
+      }
+    },
+    "LogDTO": {
+      "type": "object",
+      "required": [
+        "time"
+      ],
+      "properties": {
+        "time": {
+          "type": "string"
+        },
+        "log_id": {
+          "type": "integer"
+        },
+        "device_id": {
+          "type": "integer"
+        },
+        "bt_addr": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

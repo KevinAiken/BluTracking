@@ -1,0 +1,56 @@
+<div class="container">
+  <div *ngIf="asset">
+    <div class="form-row">
+      <div class="col-sm-11">
+        <h2>{{asset.name | uppercase}} Details</h2>
+      </div>
+      <button type="button" class="btn btn-dark col-sm-1" (click)="goBack()">Back</button>
+    </div>
+    <table class="table">
+      <tbody>
+      <tr>
+        <td>Asset Name</td>
+        <td>{{asset.name}}</td>
+      </tr>
+      <tr>
+        <td>Asset Address</td>
+        <td>{{asset.btAddr}}</td>
+      </tr>
+      <tr>
+        <td>Enroll Date</td>
+        <td>{{asset.dateEnrolled}}</td>
+      </tr>
+	  <tr>
+		<td>Missing</td>
+		<td>
+		   <div *ngIf="asset.missing === 'true'; then yes; else no" color="red"></div>
+			<ng-template #yes>
+				<span [ngStyle]="{'color':'#ff0000'}">Absent</span>
+			</ng-template>
+			<ng-template #no>
+				<span [ngStyle]="{'color':'#33cc33'}">Present</span>
+			</ng-template>
+		</td>
+	  </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  <div class="table-wrapper-scroll-y">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Asset Log</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let log of logs">
+        <td>Asset seen at: {{log.time}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

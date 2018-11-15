@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Local mysql reporting db -->
+    <bean id="hikariConfiglocal" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="connectionTestQuery" value="${local.connection.test.query}" />
+        <property name="dataSourceClassName" value="${local.datasource.class.name}" />
+        <property name="maximumPoolSize" value="${local.maximum.pool.size}" />
+        <property name="maxLifetime" value="${local.max.life.time}" />
+        <property name="idleTimeout" value="${local.idle.time.out}" />
+        <property name="allowPoolSuspension" value="${local.allow.pool.suspension:true}" />
+
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="url">${local.url}</prop>
+                <prop key="user">${local.userid}</prop>
+                <prop key="password">${local.password}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="localDataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfiglocal" />
+    </bean>
+</beans>

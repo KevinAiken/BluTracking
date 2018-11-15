@@ -1,0 +1,87 @@
+<div class="container">
+  <h2>All Assets</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Asset</th>
+      <th scope="col">Address</th>
+      <th scope="col">Date Enrolled</th>
+	  <th scope="col">Missing</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- <ng-container *ngFor="let asset of assets">
+      <tr *ngIf="assetMissing(asset.lastSeen)" class="table-danger">
+        <td>
+          <a routerLink="/asset/{{asset.id}}">
+            {{asset.name}}
+          </a>
+        </td>
+        <td>Last seen: {{asset.lastSeen}}</td>
+        <td>{{asset.type}}</td>
+      </tr>
+      <tr *ngIf="!assetMissing(asset.lastSeen)" tr class="table-success">
+        <td>
+          <a routerLink="/asset/{{asset.id}}">
+            {{asset.name}}
+          </a>
+        </td>
+        <td>Present</td>
+        <td>{{asset.type}}</td>
+      </tr>
+    </ng-container> -->
+    <ng-container *ngFor="let asset of assets">
+	  <div *ngIf="asset.missing === 'true'; then yes; else no" color="red"></div>
+	  <ng-template #yes>
+      <tr class="table-danger">
+        <td>
+          <a routerLink="/asset/{{asset.id}}">
+            {{asset.name}}
+          </a>
+        </td>
+        <td>{{asset.btAddr}}</td>
+        <td>{{asset.dateEnrolled}}</td>
+		<!-- Change to see if true or false and change to yes or no. And then use bootstrap to change the value; if yes, red, no, green -->
+		<div *ngIf="asset.missing === 'true'; then yes; else no" color="red"></div>
+		<ng-template #yes>
+			<td class="table-danger">
+				<span [ngStyle]="{'color':'#ff0000'}">Absent</span>
+			</td>
+		</ng-template>
+		<ng-template #no>
+			<td class="table-success">
+				<span [ngStyle]="{'color':'#33cc33'}">Present</span>
+			</td>
+		</ng-template>
+      </tr>
+	  </ng-template>
+	  
+	  <ng-template #no>
+	  
+	  <tr class="table-success">
+        <td>
+          <a routerLink="/asset/{{asset.id}}">
+            {{asset.name}}
+          </a>
+        </td>
+        <td>{{asset.btAddr}}</td>
+        <td>{{asset.dateEnrolled}}</td>
+		<!-- Change to see if true or false and change to yes or no. And then use bootstrap to change the value; if yes, red, no, green -->
+		<div *ngIf="asset.missing === 'true'; then yes; else no" color="red"></div>
+		<ng-template #yes>
+			<td class="table-danger">
+				<span [ngStyle]="{'color':'#ff0000'}">Absent</span>
+			</td>
+		</ng-template>
+		<ng-template #no>
+			<td class="table-success">
+				<span [ngStyle]="{'color':'#33cc33'}">Present</span>
+			</td>
+		</ng-template>
+      </tr>
+	  
+	  </ng-template>
+    </ng-container>
+    </tbody>
+  </table>
+</div>

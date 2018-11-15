@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Add Asset</h2>
+  <form (ngSubmit)="add(name.value, addr.value, type.value)" #inputForm="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Asset Name</label>
+        <input #name type="text" class="form-control" id="name"
+               required name="name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="addr">Phone Bluetooth Address</label>
+        <input #addr type="text" class="form-control" id="addr"
+               required name="addr" >
+      </div>
+      <div class="form-group col-md-12">
+        <label>Asset Type</label>
+        <select #type class="form-control" id="exampleFormControlSelect1">
+          <option>Intern</option>
+          <option>Retail</option>
+          <option>Corporate</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+  </form>
+</div>

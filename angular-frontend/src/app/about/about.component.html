@@ -1,0 +1,22 @@
+<script src="../asset.service.spec.ts"></script>
+<div class="container">
+  <h1>BluTracking</h1>
+  <p>This project demonstrates how very inexpensive Bluetooth Low Energy tags can used to track assets with a $20 computer.</p>
+  <h2>How It Works</h2>
+  <p>A Raspberry Pi runs a Python script telling it to get a list of Bluetooth addresses to survey for from the server, it surveys for them,
+  and then uploads the ones it found out of the ones it surveyed for. The assets it's surveying for are BLE tags, reliably detectable from 50 feet away.
+  <p>A RESTful web service provides access for the web client and Raspberry Pi to database information on logs and assets.</p>
+  <h2>Technology Stack</h2>
+  <p>Web Client: Angular 6</p>
+  <p>Web Service: Spring</p>
+  <p>Database: MySQL</p>
+  <p>Hardware Scripting: Python</p>
+  <h2>Bluetooth Low Energy Tags</h2>
+  <p>Bluetooth Low Energy is a recent specification of Bluetooth that allows a device to constantly advertise while using very little energy.
+  The BLE tags we're using are Bytereal's and can be bought online for  around $8 a piece. However, many BLE tags start are available for $2 and less in bulk. All BLE tags typically last around a year, advertising
+  the entire time.</p>
+  <h2>Code</h2>
+  <a href="https://github.com/KevinAiken/BluTracking">Here's a link to our github page with all the code</a>
+  <h2>Team</h2>
+  <p>Kevin Aiken, Michael Hankins, Richard Marquet and Phu Pham created this project for GSU's Software Engineering class.</p>
+</div>

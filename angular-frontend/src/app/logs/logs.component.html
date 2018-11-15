@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>All Logs</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Log ID</th>
+      <th scope="col">Asset ID</th>
+      <th scope="col">Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let log of logs">
+      <th scope="row">{{log.logId}}</th>
+      <td>{{log.deviceId}}</td>
+      <td>{{log.time}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
