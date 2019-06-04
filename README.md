@@ -22,6 +22,16 @@ Hardware Scripting: Python
 
 Bluetooth Low Energy is a recent specification of Bluetooth that allows a device to constantly advertise while using very little energy. The BLE tags we're using are Bytereal's and can be bought online for around $8 a piece. However, many BLE tags start are available for $2 and less in bulk. All BLE tags typically last around a year, advertising the entire time.
 
+## Frontend Screenshots
+
+
+List of assets
+![Assets](/screenshots/asset_list.png "asset list") 
+
+
+Individual assets page
+![Individual Asset](/screenshots/individual_asset_page.png "single asset")
+
 ## Team
 
 Kevin Aiken, Michael Hankins, Richard Marquet and Phu Pham created this project for GSU's Software Engineering class.
